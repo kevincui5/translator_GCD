@@ -4,6 +4,7 @@ from datetime import datetime
 import numpy as np
 from tensorflow.data import Dataset
 
+
 def load_data_helper(filename, idx, batch_size, n_s, params):
     data_raw = load_csv_batch(filename, idx*batch_size, batch_size)
     json_log = open('debug_data_log.json', mode='at', buffering=1)
@@ -30,7 +31,8 @@ def load_data_helper(filename, idx, batch_size, n_s, params):
 #raw data is the two column sentences, one for input, the other for out   
 def get_raw_data_tokenizer(csv_path):
     raw_data = load_clean_sentences(csv_path)
-
+    #raw_data = pd.read_csv(csv_path, sep=',').values
+    #raw_data = raw_data.values
     return get_tokenizer_helper(raw_data)
 
 def get_tokenizer_helper(raw_data):

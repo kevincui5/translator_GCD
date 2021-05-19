@@ -11,7 +11,7 @@ raw_dataset = load_clean_sentences('english-german.csv')
 
 n_sentences = len(raw_dataset)
 # reduce dataset size for testing purpose
-n_sentences = 1000
+#n_sentences = 1000
 dataset = raw_dataset[:, :]
 dataset = raw_dataset[:n_sentences, :]
 # random shuffle (optional)

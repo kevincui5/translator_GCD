@@ -2,11 +2,11 @@
 
 import string
 import re
-from pickle import dump
+#from pickle import dump
 from unicodedata import normalize
 from numpy import array
 import numpy as np
-from util import *
+from trainer.util import *
 
 # load doc into memory
 def load_doc(filename):
@@ -50,7 +50,7 @@ def clean_pairs(lines):
 			# store as string
 			clean_pair.append(' '.join(line))
 		cleaned.append(clean_pair)
-	return array(cleaned)[:1000]
+	return array(cleaned)
     #return array(cleaned)[:4000]
 
 # load dataset

@@ -3,14 +3,12 @@ from trainer.util import *
 from trainer.global_var import *
 from tensorflow.keras.layers import Bidirectional, Concatenate, Dot, Input, LSTM
 from tensorflow.keras.layers import RepeatVector, Dense, Activation, Lambda, Reshape
-import numpy as np
-#from tensorflow.keras import optimizers
+#import numpy as np
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Embedding
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
-from nltk.translate.bleu_score import corpus_bleu
-import json  #for json callback
-from datetime import datetime
+#import json  #for json callback
+#from datetime import datetime
 import tensorflow as tf
 #TRAIN BLEU: 0.94, 0.915, 0.89, 0.78
 #TEST BLEU: 0.65, 0.55, 0.50, 0.365

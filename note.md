@@ -47,3 +47,32 @@ gcloud ai-platform local train \
         --job-dir="./job" \
         --output_dir="./trained_model" \
         --complete_data_path="./english-german.csv"
+        
+
+export BUCKET_NAME="translator-gcd"
+export REGION="us-central1"
+export JOB_NAME="translator_traning2"
+export JOB_DIR="gs://$BUCKET_NAME/job-dir"
+cd OneDrive/courses/tf_ws/translator_GCD/
+ls -pR
+gsutil -m cp *.csv gs://$BUCKET_NAME/data/
+gsutil -m cp -r train_data gs://$BUCKET_NAME/
+
+
+
+gcloud ai-platform jobs submit training $JOB_NAME \
+      --package-path=trainer/ \
+      --module-name=trainer.task \
+      --region=$REGION \
+      --python-version=3.7 \
+      --runtime-version=2.4 \
+      --job-dir=$JOB_DIR \
+      -- \
+    --train_data_path gs://$BUCKET_NAME/train_data/english-german-train.csv \
+    --n_a 512 \
+    --batch_size 156 \
+    --embedding_dim 100 \
+    --num_epochs 1 \
+    --train_examples 1 \
+    --output_dir gs://$BUCKET_NAME/trained_model \
+    --complete_data_path gs://$BUCKET_NAME/data/english-german.csv

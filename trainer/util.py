@@ -7,6 +7,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.utils import to_categorical
 from numpy import array
 from numpy import genfromtxt
+import pandas as pd
 '''
 def softmax(x, axis=1):
     """Softmax activation function.
@@ -30,7 +31,9 @@ def softmax(x, axis=1):
 '''
 # load a clean dataset
 def load_clean_sentences(filename):
-    return genfromtxt(filename, delimiter=',', dtype=str)
+    ndarray = pd.read_csv(filename, sep=',').values
+    #genfromtxt(filename, delimiter=',', dtype=str)
+    return ndarray
 	#return load(open(filename, 'rb'))
 
 def load_csv_batch(filename, start_row, rows):
